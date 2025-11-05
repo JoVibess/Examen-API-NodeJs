@@ -24,7 +24,7 @@ module.exports = {
         allowNull: true
       },
       status: {
-        type: Sequelize.ENUM('open', 'validated', 'paid', 'shipped', 'completed'),
+        type: Sequelize.ENUM('open', 'validated', 'closed', 'paid', 'shipped', 'completed'),
         defaultValue: 'open'
       },
       createdAt: {

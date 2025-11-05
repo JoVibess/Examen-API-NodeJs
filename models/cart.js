@@ -2,30 +2,33 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Cart extends Model {}
+  class Cart extends Model {
+    static associate(models) {}
+  }
 
   Cart.init(
     {
       userId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
       deliveryAddress: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: true
       },
       totalPrice: {
         type: DataTypes.FLOAT,
-        allowNull: true,
+        defaultValue: 0
       },
       status: {
-        type: DataTypes.ENUM('open', 'validated', 'paid', 'shipped', 'completed'),
-        defaultValue: 'open',
-      },
+        type: DataTypes.STRING,
+        defaultValue: 'open'
+      }
     },
     {
       sequelize,
       modelName: 'Cart',
+      tableName: 'carts'
     }
   );
 
